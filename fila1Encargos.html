@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Fila1</title>
+    <link rel="stylesheet" type="text/css" href="css/vistaDetalles.css">
+    <link rel="stylesheet" type="text/css" href="css/modal.css">
+    <link rel="stylesheet" type="text/css" href="css/boostrapV4w3cFix.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script>
+        $(function(){
+            $("#nav-bar").load("barraNavegacion.html");
+        });
+    </script>
+</head>
+<body>
+<!--barra de navegacion-->
+<div id="nav-bar"></div>
+<table id="detalles">
+    <tr>
+        <th>Tipo de dato</th>
+        <th>Información</th>
+    </tr>
+    <tr>
+        <td>Descripción encargo</td>
+        <td>El envío contiene un balon de fútbol.</td>
+    </tr>
+    <tr>
+        <td>Espacio</td>
+        <td>20x20x20</td>
+    </tr>
+    <tr>
+        <td>Kilos</td>
+        <td>800gr</td>
+    </tr>
+    <tr>
+        <td>Región origen</td>
+        <td>Tarapacá</td>
+    </tr>
+    <tr>
+        <td>Comuna origen</td>
+        <td>Pica</td>
+    </tr>
+    <tr>
+        <td>Región destino</td>
+        <td>Coquimbo</td>
+    </tr>
+    <tr>
+        <td>Comuna destino</td>
+        <td>Vicuña</td>
+    </tr>
+    <tr>
+        <td>Foto encargo</td>
+        <td><img id="myImg" src="images/imagen1" alt="Imagen Encargo" style="width: 320px;height: 240px"></td>
+    </tr>
+    <tr>
+        <td>Email encargador</td>
+        <td>john@example.com</td>
+    </tr>
+    <tr>
+        <td>Número celular encargador</td>
+        <td>+56912341234</td>
+    </tr>
+</table>
+<br><a href="verEncargos.php" class="btn btn-info">Volver a encargos</a>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01" src="images/imagen2" alt="Imagen Encargo">
+    <div id="caption"></div>
+</div>
+<script src="js/modal.js"></script>
+</body>
+</html>
