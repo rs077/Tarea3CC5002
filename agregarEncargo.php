@@ -9,16 +9,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="js/regionesYcomunas.js"></script>
     <script src="js/validacionAgregarEncargoForm.js"></script>
-    <script>
-        $(function(){
-            $("#nav-bar").load("barraNavegacion.html");
-        });
-    </script>
 </head>
 <body>
 <?php include 'validacionAgregarEncargoForm.php';?>
 <!--barra de navegacion-->
-<div id="nav-bar"></div>
+<?php include 'barraNavegacion.html';?>
 <!--FORMULARIO AGREGAR ENCARGO-->
 <div id="agregarEncargo" class="container">
     <form name="formAgregarEncargo" id="formAgregarEncargo" class="form-horizontal" onsubmit="return validateForm()"
@@ -35,7 +30,7 @@
         </div>
         <!--espacio-->
         <div class="form-group row">
-            <label class="control-label" for="espacio-solicitado">Espacio::</label>
+            <label class="control-label" for="espacio-solicitado">Espacio:</label>
             <select class="form-control" id="espacio-solicitado" name="espacio-solicitado">
                 <option value="--">--</option>
                 <option value="1">10x10x10</option>
@@ -117,11 +112,16 @@
             </script>
         </div>
         <!--boton para enviar formulario-->
-        <div class="form-group row">
+        <div class="text-md-center">
             <button name=”submit” id="submit" type="submit" class="btn btn-info">Agregar encargo</button>
         </div>
     </form>
-
 </div>
+<br>
+<!--boton para volver al menu principal-->
+<div class="text-md-center">
+    <a href="index.php" class="btn btn-info">Volver al menú principal</a>
+</div>
+<br>
 </body>
 </html>

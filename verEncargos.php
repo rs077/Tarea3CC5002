@@ -11,14 +11,10 @@
     <script src="js/regionesYcomunas.js"></script>
     <script src="js/validacionAgregarViajeForm.js"></script>
     <script src="js/clickableRow.js"></script>
-    <script>
-        $(function(){
-            $("#nav-bar").load("barraNavegacion.html");
-        });
-    </script>
 </head>
 <body>
-<div id="nav-bar"></div>
+<!--barra de navegacion-->
+<?php include 'barraNavegacion.html';?>
 <!--DATOS DE ENCARGOS-->
 <div id="verEncargos" class="container">
     <h2>Encargos Programados(click en encargo para más detalles)</h2>
@@ -123,5 +119,11 @@
     }// end of if checking sufficient records are there to display bottom navigational link.
     ?>
 </div>
+<br>
+<!--boton para volver al menu principal-->
+<div class="text-md-center">
+    <a href="index.php" class="btn btn-info">Volver al menú principal</a>
+</div>
+<br>
 </body>
 </html>

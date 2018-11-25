@@ -9,16 +9,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="js/regionesYcomunas.js"></script>
     <script src="js/validacionAgregarViajeForm.js"></script>
-    <script>
-        $(function(){
-            $("#nav-bar").load("barraNavegacion.html");
-        });
-    </script>
 </head>
 <body>
 <!--barra de navegacion-->
-<div id="nav-bar"></div>
+<?php include 'barraNavegacion.html';?>
+<div id="index" class="container">
 <h1>Bienvenido al portal de viajes y envíos.</h1>
+<?php include 'searchBar.php';?>
 <footer>
     <p>
         <a href="http://jigsaw.w3.org/css-validator/check/referer">
@@ -28,5 +25,6 @@
         </a>
     </p>
 </footer>
+</div>
 </body>
 </html>

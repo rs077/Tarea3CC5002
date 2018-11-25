@@ -86,5 +86,5 @@ catch(PDOException $e)
     echo "Error: " . $e->getMessage();
 }
 $conn = null;
-//header("Location: index.html");
+//header("Location: index.php");
 ?>

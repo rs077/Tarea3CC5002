@@ -10,15 +10,10 @@
     <script src="js/regionesYcomunas.js"></script>
     <script src="js/validacionAgregarViajeForm.js"></script>
     <script src="js/clickableRow.js"></script>
-    <script>
-        $(function(){
-            $("#nav-bar").load("barraNavegacion.html");
-        });
-    </script>
 </head>
 <body>
 <!--barra de navegacion-->
-<div id="nav-bar"></div>
+<?php include 'barraNavegacion.html';?>
 <!--DATOS DE VIAJES-->
 <div id="verViajes" class="container">
     <h2>Viajes Programados(click en viaje para más detalles)</h2>
@@ -68,7 +63,7 @@
 </tr></thead>";
         // output data of each row
         while($row = $result->fetch_row()) {
-            echo "<tr class='clickable-row' data-href='http://localhost/Tarea2CC5002/detailViaje.php?id=" .$row[8]. "'><td>" . $row[0]. ", Comuna " . $row[1]. "</td>
+            echo "<tr class='clickable-row' data-href='/Tarea3CC5002/detailViaje.php?id=" .$row[8]. "'><td>" . $row[0]. ", Comuna " . $row[1]. "</td>
 <td>" . $row[2]. ", Comuna " . $row[3]. "</td><td>" . $row[4]. "</td><td>" . $row[5]. "</td><td>" . $row[6]. "</td><td>" . $row[7]. "</td></tr>";
         }
         echo "</table>";
@@ -121,5 +116,11 @@
     }// end of if checking sufficient records are there to display bottom navigational link.
     ?>
 </div>
+<br>
+<!--boton para volver al menu principal-->
+<div class="text-md-center">
+    <a href="index.php" class="btn btn-info">Volver al menú principal</a>
+</div>
+<br>
 </body>
 </html>

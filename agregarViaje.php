@@ -9,16 +9,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="js/regionesYcomunas.js"></script>
     <script src="js/validacionAgregarViajeForm.js"></script>
-    <script>
-        $(function(){
-            $("#nav-bar").load("barraNavegacion.html");
-        });
-    </script>
 </head>
 <body>
 <?php include 'validacionAgregarViajeForm.php';?>
 <!--barra de navegacion-->
-<div id="nav-bar"></div>
+<?php include 'barraNavegacion.html';?>
 <!--FORMULARIO AGREGAR VIAJE-->
 <div id="agregarViaje" class="container">
     <form name="formAgregarViaje" id="formAgregarViaje" class="form-horizontal" onsubmit="return validateForm()"
@@ -110,11 +105,17 @@
             </script>
         </div>
         <!--boton para enviar formulario-->
-        <div class="form-group row">
+        <div class="text-md-center">
             <button name=”submit” id="submit" type="submit" class="btn btn-info">Agregar viaje</button>
         </div>
     </form>
     <?php if (count($_POST)>0) echo "Form Submitted!"; ?>
 </div>
+<br>
+<!--boton para volver al menu principal-->
+<div class="text-md-center">
+    <a href="index.php" class="btn btn-info">Volver al menú principal</a>
+</div>
+<br>
 </body>
 </html>
