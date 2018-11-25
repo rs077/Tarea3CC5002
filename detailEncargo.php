@@ -69,6 +69,12 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
-<br><a href="verEncargos.php" class="btn btn-info">Volver a Encargos</a>
+<div class="text-md-center">
+    <!--boton para volver a encargos-->
+    <br><a href="verEncargos.php" class="btn btn-info">Volver a Encargos</a>
+    <!--boton para volver al menu principal-->
+    <br><a href="index.php" class="btn btn-info">Volver al menú principal</a>
+</div>
+<br>
 </body>
 </html>

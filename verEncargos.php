@@ -66,7 +66,7 @@
 </tr></thead>";
         // output data of each row
         while($row = $result->fetch_row()) {
-            echo "<tr class='clickable-row' data-href='http://localhost/Tarea2CC5002/detailEncargo.php?id=" .$row[7]. "'><td>" . $row[0]. ", Comuna " . $row[1]. "</td>
+            echo "<tr class='clickable-row' data-href='http://localhost/Tarea3CC5002/detailEncargo.php?id=" .$row[7]. "'><td>" . $row[0]. ", Comuna " . $row[1]. "</td>
 <td>" . $row[2]. ", Comuna " . $row[3]. "</td><td>" . $row[4]. "</td><td>" . $row[5]. "</td><td>" . $row[6]. "</td></tr>";
         }
         echo "</table>";
