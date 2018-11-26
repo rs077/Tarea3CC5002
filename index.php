@@ -11,11 +11,15 @@
     <script src="js/validacionAgregarViajeForm.js"></script>
 </head>
 <body>
-<!--barra de navegacion-->
-<?php include 'barraNavegacion.html';?>
-<div id="index" class="container">
-<h1>Bienvenido al portal de viajes y envíos.</h1>
-<?php include 'searchBar.php';?>
+    <!--barra de navegacion-->
+    <?php include 'barraNavegacion.html';?>
+    <div id="index" class="container">
+    <h1>Bienvenido al portal de viajes y envíos.</h1>
+    <!--barra de busqueda-->
+    <?php include 'searchBar.php';?>
+    <!--mapa-->
+    <?php include 'mapaPortada.php';?>
+<br>
 <footer>
     <p>
         <a href="http://jigsaw.w3.org/css-validator/check/referer">

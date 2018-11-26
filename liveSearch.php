@@ -23,7 +23,7 @@ while($row = $result->fetch_row()) {
     $hint = $row[1];
     if (strpos($hint, $q) != false) {
         $response = $hint;
-        echo "<a href='http://localhost/Tarea3CC5002/detailEncargo.php?id=" .$row[0]. "'>" . $response ."<br/></a>";
+        echo "<a href='detailEncargo.php?id=" .$row[0]. "'>" . $response ."<br/></a>";
     }
 
 //output the response

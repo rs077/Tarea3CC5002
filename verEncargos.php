@@ -17,6 +17,8 @@
 <?php include 'barraNavegacion.html';?>
 <!--DATOS DE ENCARGOS-->
 <div id="verEncargos" class="container">
+    <!--barra de busqueda-->
+    <?php include 'searchBar.php';?>
     <h2>Encargos Programados(click en encargo para más detalles)</h2>
     <?php
     include 'datosServidor.php';
@@ -66,7 +68,7 @@
 </tr></thead>";
         // output data of each row
         while($row = $result->fetch_row()) {
-            echo "<tr class='clickable-row' data-href='http://localhost/Tarea3CC5002/detailEncargo.php?id=" .$row[7]. "'><td>" . $row[0]. ", Comuna " . $row[1]. "</td>
+            echo "<tr class='clickable-row' data-href='detailEncargo.php?id=" .$row[7]. "'><td>" . $row[0]. ", Comuna " . $row[1]. "</td>
 <td>" . $row[2]. ", Comuna " . $row[3]. "</td><td>" . $row[4]. "</td><td>" . $row[5]. "</td><td>" . $row[6]. "</td></tr>";
         }
         echo "</table>";
