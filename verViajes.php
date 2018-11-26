@@ -101,7 +101,7 @@
 
         for($i=0;$i < $nume;$i=$i+$limit){
             if($i <> $eu){
-                echo " <a href='$page_name?start=$i'>$l</a> ";
+                echo "<a href='$page_name?start=$i'>$l</a> ";
             }
             else { echo "$l";}        /// Current page is not displayed as link and given font color red
             $l=$l+1;

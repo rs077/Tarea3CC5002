@@ -109,7 +109,6 @@
             <button name=”submit” id="submit" type="submit" class="btn btn-info">Agregar viaje</button>
         </div>
     </form>
-    <?php if (count($_POST)>0) echo "Form Submitted!"; ?>
 </div>
 <br>
 <!--boton para volver al menu principal-->
