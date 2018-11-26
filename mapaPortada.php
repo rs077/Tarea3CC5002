@@ -4,112 +4,55 @@
 
 <h1>Vista en Google Maps de los 3 últimos viajes ingresados:</h1>
 
-<div id="googleMap" style="width:100%;height:400px;"></div>
+<div id="googleMap" style="width:100%;height:500px;"></div>
 
 <script>
     var map;
     function initialize() {
-        geocoder = new google.maps.Geocoder();
         var latlng = new google.maps.LatLng(-33.47269,-70.668182);
         var mapOptions = {
             center:latlng,
-            zoom:6,
+            zoom:4,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
-        var geocoder1 = new google.maps.Geocoder();
-        var geocoder2 = new google.maps.Geocoder();
         var address1 = 'Santiago';
-        var address2 = 'Arica';
-        geocodeAddress(geocoder1, map, address1);
-        geocodeAddress(geocoder2, map, address2);
-    }
+        var address2 = 'Calama';
 
-    function geocodeAddress(geocoder, resultsMap, address) {
-        //var address = document.getElementById('address').value;
-        geocoder.geocode({'address': address}, function(results, status) {
-            if (status === 'OK') {
-                var marker = new google.maps.Marker({
-                    map: resultsMap,
-                    position: results[0].geometry.location
+        var gc = new google.maps.Geocoder();
+
+        gc.geocode({'address': address1}, function (res1, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                gc.geocode({'address': address2}, function (res2, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        new google.maps.Marker({
+                            position: res1[0].geometry.location,
+                            map: map
+                        });
+
+                        new google.maps.Marker({
+                            position: res2[0].geometry.location,
+                            map: map
+                        });
+
+                        new google.maps.Polyline({
+                            path: [
+                                res1[0].geometry.location,
+                                res2[0].geometry.location
+                            ],
+                            strokeColor: '#FF0000',
+                            geodesic: true,
+                            map: map
+                        });
+                    }
                 });
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
             }
         });
+
     }
-
-    /*var marker = new google.maps.Marker({
-            position: latlng,
-            animation:google.maps.Animation.BOUNCE
-            });
-        marker.setMap(map);*/
-
-        /*var marker = new google.maps.Marker({
-            position: latlng,
-            animation:google.maps.Animation.BOUNCE
-            });
-        marker.setMap(map);*/
-
-    /*
-    var geocoder;
-    var map;
-    var ultimoMarker;
-    function initialize() {
-        geocoder = new google.maps.Geocoder();
-        var latlng = new google.maps.LatLng(-33.47269,-70.668182);
-        var mapOptions = {
-            zoom: 12,
-            center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    }
-    function codeAddress() {
-  var address = document.getElementById('address').value;
-  geocoder.geocode( { 'address': address}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location,
-	  title: address
-      });
-      var infowindow = new google.maps.InfoWindow({
-      	  content: "<p>Descripcion de este marcador, con muchos datos</p><h2>titulo</h2>"
-	  });
-      google.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map,marker);
-      });
-      // agregar linea entre este y último marcador
-      if (ultimoMarker) {
-	var flightPlanCoordinates = [
-          ultimoMarker.position, marker.position];
-        var flightPath = new google.maps.Polyline({
-            path: flightPlanCoordinates,
-            geodesic: true,
-            strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
-            strokeWeight: 2
-          });
-
-          flightPath.setMap(map);
-      }
-      ultimoMarker = marker;
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-    */
 </script>
-
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATD6NGNgSk5PI4nEru094HIQyln6IbtTo&callback=initialize">
-
 </script>
-
 </body>
 </html>
