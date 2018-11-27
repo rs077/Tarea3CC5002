@@ -9,8 +9,7 @@
 include 'datosServidor.php';
 $id_comuna_origen = "";
 $id_comuna_destino = "";
-//$stmt->bindParam(':fotos', $foto);
-//$foto = "";
+
 // SELECT DATA id comuna origen
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -51,40 +50,30 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 // INSERT DATA
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+$descripcion = $_POST["descripcion"];
+$origen = $id_comuna_origen;
+$destino = $id_comuna_destino;
+$espacio = $_POST["espacio-solicitado"];
+$kilos = $_POST["kilos-solicitados"];
+$email_encargador = $_POST["email"];
+$celular_encargador = $_POST["celular"];
 
-    // prepare sql and bind parameters
-    $stmt = $conn->prepare("INSERT INTO `encargo` (descripcion, origen, destino, espacio, kilos, 
+$sql = "INSERT INTO `encargo` (descripcion, origen, destino, espacio, kilos, 
     email_encargador, celular_encargador) 
-    VALUES (:descripcion, :origen, :destino, :espacio, :kilos, :email_encargador, :celular_encargador)");
-    $stmt->bindParam(':descripcion', $descripcion);
-    $stmt->bindParam(':origen', $origen);
-    $stmt->bindParam(':destino', $destino);
-    $stmt->bindParam(':espacio', $espacio);
-    $stmt->bindParam(':kilos', $kilos);
-    $stmt->bindParam(':email_encargador', $email_encargador);
-    $stmt->bindParam(':celular_encargador', $celular_encargador);
+    VALUES ('".$descripcion."', '".$origen."', '".$destino."', '".$espacio."', 
+    '".$kilos."', '".$email_encargador."', '".$celular_encargador."')";
 
-    // insert a row
-    $descripcion = $_POST["descripcion"];
-    $origen = $id_comuna_origen;
-    $destino = $id_comuna_destino;
-    $espacio = $_POST["espacio-solicitado"];
-    $kilos = $_POST["kilos-solicitados"];
-    $email_encargador = $_POST["email"];
-    $celular_encargador = $_POST["celular"];
-    $stmt->execute();
-
-    echo "New records created successfully";
-
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
-catch(PDOException $e)
-{
-    echo "Error: " . $e->getMessage();
-}
-$conn = null;
-//header("Location: index.php");
+$conn->close();
+header("Location: index.php");
 ?>

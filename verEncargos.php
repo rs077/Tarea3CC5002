@@ -78,18 +78,22 @@
 
     $conn->close();
     ////////////////////////////// End of displaying the table with records ////////////////////////
-    try {
-        $dbo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    } catch (PDOException $e) {
-        print "Error!: " . $e->getMessage() . "<br/>";
-        die();
+    include 'datosServidor.php';
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
+    $sql = "SELECT count(en1.id) AS numero FROM `encargo` en1";
+    $result = $conn->query($sql);
+    $contador = $result->fetch_row();
 
     /////////////// Total number of records in our table. We will use this to break the pages///////
 
     /////// The variable nume above will store the total number of records in the table////
-    $sql = "SELECT count(en1.id) AS numero FROM `encargo` en1";
-    $nume = $dbo->query($sql)->fetchColumn();
+    $nume = $contador[0];
+    $conn->close();
     ///////////////////////////////
     if($nume > $limit ){ // Let us display bottom links if sufficient records are there for paging
 /////////////// Start the bottom links with Prev and next link with page numbers /////////////////

@@ -50,38 +50,31 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 // INSERT DATA
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // prepare sql and bind parameters
-    $stmt = $conn->prepare("INSERT INTO `viaje` (fecha_ida, origen, destino, kilos_disponible, 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+$fecha_ida = $_POST["fecha-viaje"];
+$origen = $id_comuna_origen;
+$destino = $id_comuna_destino;
+$kilos_disponible = $_POST["kilos-disponibles"];
+$espacio_disponible = $_POST["espacio-disponible"];
+$email_viajero = $_POST["email"];
+$celular_viajero = $_POST["celular"];
+
+$sql = "INSERT INTO `viaje` (fecha_ida, origen, destino, kilos_disponible, 
     espacio_disponible, email_viajero, celular_viajero) 
-    VALUES (:fecha_ida, :origen, :destino, :kilos_disponible, :espacio_disponible, :email_viajero, :celular_viajero)");
-    $stmt->bindParam(':fecha_ida', $fecha_ida);
-    $stmt->bindParam(':origen', $origen);
-    $stmt->bindParam(':destino', $destino);
-    $stmt->bindParam(':kilos_disponible', $kilos_disponible);
-    $stmt->bindParam(':espacio_disponible', $espacio_disponible);
-    $stmt->bindParam(':email_viajero', $email_viajero);
-    $stmt->bindParam(':celular_viajero', $celular_viajero);
+    VALUES ('".$fecha_ida."', '".$origen."', '".$destino."', '".$kilos_disponible."', 
+            '".$espacio_disponible."', '".$email_viajero."', '".$celular_viajero."')";
 
-
-    // insert a row
-    $fecha_ida = $_POST["fecha-viaje"];
-    $origen = $id_comuna_origen;
-    $destino = $id_comuna_destino;
-    $kilos_disponible = $_POST["kilos-disponibles"];
-    $espacio_disponible = $_POST["espacio-disponible"];
-    $email_viajero = $_POST["email"];
-    $celular_viajero = $_POST["celular"];
-    $stmt->execute();
-
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
-catch(PDOException $e)
-{
-    echo "Error: " . $e->getMessage();
-}
-$conn = null;
+
+$conn->close();
 header("Location: index.php");
 ?>
