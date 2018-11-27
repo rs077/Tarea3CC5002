@@ -62,7 +62,7 @@ $conn->close();
         var latlng = new google.maps.LatLng(-33.47269, -70.668182);
         var mapOptions = {
             center: latlng,
-            zoom: 5,
+            zoom: 4,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
@@ -97,13 +97,19 @@ $conn->close();
                         var markerOrigen = new google.maps.Marker({
                             position: resOrigen[0].geometry.location,
                             map: map,
-                            title: addressOrigen + ", Fecha de viaje: " + fechaViaje
+                            title:
+                                "Comuna origen: " + addressOrigen + "\n" +
+                                "Comuna destino: " + addressDestino + "\n" +
+                                "Fecha de viaje: " + fechaViaje
                         });
 
                         var markerDestino = new google.maps.Marker({
                             position: resDestino[0].geometry.location,
                             map: map,
-                            title: addressDestino + ", Fecha de viaje: " + fechaViaje
+                            title:
+                                "Comuna origen: " + addressOrigen + "\n" +
+                                "Comuna destino: " + addressDestino + "\n" +
+                                "Fecha de viaje: " + fechaViaje
                         });
 
                         new google.maps.Polyline({
@@ -125,7 +131,7 @@ $conn->close();
                                 "<li>Destino: " + addressDestino + "\n" +
                                 "<li>Espacio: " + espacio + "\n" +
                                 "<li>Kilos: " + kilos + "\n" +
-                                "<li><a href='detailViaje.php?id=" + id +"' target='_blank'>Detalle viaje</a>" +
+                                "<li><a href='detailViaje.php?id=" + id +"' target='_blank'>Ver detalle</a>" +
                                 "</ul>"
 
 
